@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+
+    .component{
+        @apply flex justify-center items-center h-[100vh] w-[100%] bg-[#111520];
+    }
+    .cardViewLogin{
+        @apply p-2 flex flex-col justify-around items-center right-1 ring-slate-400 rounded-md bg-[#1A1F2D] h-[350px] w-64; 
+    }
+    .inputFeild{
+        @apply px-2 w-full placeholder-gray-400  bg-[#10131C] rounded-md h-8 text-white
+    }
+    .button-violet{
+        @apply  h-8 w-48 text-white font-semibold bg-[#9A00FF] rounded-md
+    }
+
+}
