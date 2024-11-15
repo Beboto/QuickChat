@@ -1,9 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
+// Firebase configuration with environment variables for secure data
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -19,3 +20,14 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const db = getFirestore(app);
+
+// Monitor authentication state changes
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("User is authenticated:", user);
+    // User is signed in, you can now allow Firestore access
+  } else {
+    console.log("User is not authenticated.");
+    // Redirect to login or show restricted message as needed
+  }
+});
